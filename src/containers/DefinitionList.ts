@@ -2,20 +2,7 @@ import { connect } from "react-redux";
 
 import DefinitionList from "../components/DefinitionList";
 
-interface State {
-  stdWorkDays: string;
-  stdWorkHours: string;
-  workedDays: string;
-  workedHours: string;
-  salariedDays: string;
-  remainWorkDays: string;
-  excessWorkTimes: string;
-  workTimeMargin: string;
-  requiredWorkTimes: string;
-  lastUpdatedAt: string;
-}
-
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: any) => ({
   stdWorkDays: state.stdWorkDays,
   stdWorkHours: state.stdWorkHours,
   workedDays: state.workedDays,
@@ -28,6 +15,6 @@ const mapStateToProps = (state: State) => ({
   lastUpdatedAt: state.lastUpdatedAt
 });
 
-const mapDispatchToProps = () => {};
+const mapDispatchToProps = (): any => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(DefinitionList);
