@@ -13,8 +13,8 @@ const MainPage = () =>
   <div>
     <Header />
     <ContentContainer>
-      <Notification />
       <DefinitionList />
+      <Notification />
     </ContentContainer>
   </div>;
 
