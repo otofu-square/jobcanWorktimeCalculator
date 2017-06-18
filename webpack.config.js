@@ -5,7 +5,7 @@ module.exports = {
     worktime: "./src/worktime.ts"
   },
   output: {
-    filename: "[name].bundle.js",
+    filename: "[name].js",
     path: __dirname + "/dist/js"
   },
   devtool: "source-map",
