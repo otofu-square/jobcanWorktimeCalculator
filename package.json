@@ -5,7 +5,8 @@
   "license": "ISC",
   "scripts": {
     "build": "webpack && tsc src/worktime.ts --outDir dist/js && tsc src/background.ts --outDir dist/js",
-    "prettier": "prettier"
+    "prettier": "prettier",
+    "start": "webpack-dev-server --hot --inline --no-info"
   },
   "devDependencies": {
     "@types/chrome": "0.0.46",
