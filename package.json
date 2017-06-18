@@ -18,7 +18,8 @@
     "prettier": "^1.4.4",
     "source-map-loader": "^0.2.1",
     "typescript": "^2.3.4",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
     "material-ui": "^0.18.3",
