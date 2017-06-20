@@ -1,46 +1,76 @@
 import * as React from "react";
+import { Table, TableBody, TableRow, TableRowColumn } from "material-ui/Table";
 
 interface Props {
   stdWorkDays: string;
   stdWorkHours: string;
   workedDays: string;
-  workedHours: string;
+  workedHours: number;
   salariedDays: string;
   remainWorkDays: string;
-  excessWorkTimes: string;
-  workTimeMargin: string;
-  requiredWorkTimes: string;
+  excessWorkTimes: number;
+  workTimeMargin: number;
+  requiredWorkTimes: number;
   lastUpdatedAt: string;
 }
 
+const formatDate = (d: Date): string => {
+  const [year, month, date, hours, minutes] = [
+    d.getFullYear(),
+    d.getMonth() + 1,
+    d.getDate(),
+    d.getHours(),
+    d.getMinutes()
+  ];
+  return `${year}/${month}/${date} ${hours}:${minutes}`;
+};
+
 const DefinitionList = (props: Props) =>
-  <div>
-    <dl>
-      <hr />
-      <dt>所定労働日数 <small>days</small></dt>
-      <dd>{props.stdWorkDays}</dd>
-      <dt>所定労働時間 <small>hours</small></dt>
-      <dd>{props.stdWorkHours}</dd>
-      <hr />
-      <dt>実働日数 <small>days</small></dt>
-      <dd>{props.workedDays}</dd>
-      <dt>実労働時間 <small>hours</small></dt>
-      <dd>{props.workedHours}</dd>
-      <dt>有給休暇消化日数 <small>days</small></dt>
-      <dd>{props.salariedDays}</dd>
-      <hr />
-      <dt>今月の残り出勤可能日数 <small>days</small></dt>
-      <dd>{props.remainWorkDays}</dd>
-      <dt>給与労働時間 <small>hours</small></dt>
-      <dd>{props.excessWorkTimes}</dd>
-      <dt>何時間余裕があるか（貯金） <small>hours</small></dt>
-      <dd>{props.workTimeMargin}</dd>
-      <dt>1日あたりの労働時間目安 <small>hours</small></dt>
-      <dd>{props.requiredWorkTimes}</dd>
-      <hr />
-      <dt>最終更新日時</dt>
-      <dd>{props.lastUpdatedAt}</dd>
-    </dl>
-  </div>;
+  <Table>
+    <TableBody displayRowCheckbox={false}>
+      <TableRow>
+        <TableRowColumn>所定労働日数</TableRowColumn>
+        <TableRowColumn>{props.stdWorkDays}</TableRowColumn>
+      </TableRow>
+      <TableRow>
+        <TableRowColumn>所定労働時間</TableRowColumn>
+        <TableRowColumn>{props.stdWorkHours}</TableRowColumn>
+      </TableRow>
+      <TableRow>
+        <TableRowColumn>実働日数</TableRowColumn>
+        <TableRowColumn>{props.workedDays}</TableRowColumn>
+      </TableRow>
+      <TableRow>
+        <TableRowColumn>実労働時間</TableRowColumn>
+        <TableRowColumn>{props.workedHours.toFixed(2)}</TableRowColumn>
+      </TableRow>
+      <TableRow>
+        <TableRowColumn>有給消化日数</TableRowColumn>
+        <TableRowColumn>{props.salariedDays}</TableRowColumn>
+      </TableRow>
+      <TableRow>
+        <TableRowColumn>今月の残り出勤可能日数</TableRowColumn>
+        <TableRowColumn>{props.remainWorkDays}</TableRowColumn>
+      </TableRow>
+      <TableRow>
+        <TableRowColumn>給与労働時間</TableRowColumn>
+        <TableRowColumn>{props.excessWorkTimes.toFixed(2)}</TableRowColumn>
+      </TableRow>
+      <TableRow>
+        <TableRowColumn>何時間余裕があるか（貯金）</TableRowColumn>
+        <TableRowColumn>{props.workTimeMargin.toFixed(2)}</TableRowColumn>
+      </TableRow>
+      <TableRow>
+        <TableRowColumn>一日あたりの労働時間目安</TableRowColumn>
+        <TableRowColumn>{props.requiredWorkTimes.toFixed(2)}</TableRowColumn>
+      </TableRow>
+      <TableRow>
+        <TableRowColumn>最終更新日時</TableRowColumn>
+        <TableRowColumn>
+          {formatDate(new Date(props.lastUpdatedAt))}
+        </TableRowColumn>
+      </TableRow>
+    </TableBody>
+  </Table>;
 
 export default DefinitionList;
